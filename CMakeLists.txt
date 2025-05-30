@@ -41,3 +41,20 @@ install(TARGETS quickhull
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
         DESTINATION include
         FILES_MATCHING PATTERN "*.hpp")
+
+# vcpkg install target
+#if (DEFINED CMAKE_TOOLCHAIN_FILE AND CMAKE_TOOLCHAIN_FILE MATCHES "vcpkg")
+    include(GNUInstallDirs)
+    install(EXPORT quickhullTargets
+        FILE quickhullTargets.cmake
+        NAMESPACE quickhull::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/quickhull)
+    include(CMakePackageConfigHelpers)
+    configure_package_config_file(
+        ${CMAKE_CURRENT_SOURCE_DIR}/cmake/quickhullConfig.cmake.in
+        ${CMAKE_CURRENT_BINARY_DIR}/quickhullConfig.cmake
+        INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/quickhull
+    )
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/quickhullConfig.cmake
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/quickhull)
+#endif()
