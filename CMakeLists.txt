@@ -29,3 +29,15 @@ target_include_directories(quickhull PUBLIC
 
 # Optionally, set C++ standard
 set_target_properties(quickhull PROPERTIES CXX_STANDARD 11 CXX_STANDARD_REQUIRED YES)
+
+# Install rules
+install(TARGETS quickhull
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
+# Install public headers (preserving directory structure)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        DESTINATION include
+        FILES_MATCHING PATTERN "*.hpp")
