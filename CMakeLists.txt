@@ -8,23 +8,23 @@ set(SOURCES
 
 # Collect all header files (for IDEs and install, not strictly needed for build)
 set(HEADERS
-    QuickHull.hpp
-    MathUtils.hpp
-    HalfEdgeMesh.hpp
-    ConvexHull.hpp
-    Structs/Mesh.hpp
-    Structs/Plane.hpp
-    Structs/Pool.hpp
-    Structs/Ray.hpp
-    Structs/Vector3.hpp
-    Structs/VertexDataSource.hpp
+    include/QuickHull.hpp
+    include/MathUtils.hpp
+    include/HalfEdgeMesh.hpp
+    include/ConvexHull.hpp
+    include/Structs/Mesh.hpp
+    include/Structs/Plane.hpp
+    include/Structs/Pool.hpp
+    include/Structs/Ray.hpp
+    include/Structs/Vector3.hpp
+    include/Structs/VertexDataSource.hpp
 )
 
 add_library(quickhull STATIC ${SOURCES} ${HEADERS})
 
 target_include_directories(quickhull PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/Structs
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Structs
 )
 
 # Optionally, set C++ standard
