@@ -2,3 +2,4 @@
 Tests/build
 Tests/.cache
 build
+install
